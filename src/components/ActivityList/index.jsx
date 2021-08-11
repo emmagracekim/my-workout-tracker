@@ -2,6 +2,8 @@ import React from "react"
 import { withFirebase } from "../Firebase"
 import loader from "./loader.gif"
 
+import { spacing } from "@material-ui/system"
+import { Button } from "@material-ui/core"
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
@@ -11,6 +13,11 @@ import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import DeleteIcon from "@material-ui/icons/Delete"
 import EditIcon from "@material-ui/icons/Edit"
+import AddCircleIcon from "@material-ui/icons/AddCircle"
+import { Typography } from "@material-ui/core"
+import MyButton from "../Styling/MyButton"
+
+import SelectMuscleGroup from "../AddExerciseModal.js/SelectMuscleGroup"
 
 function ActivityList(props) {
   const {
@@ -21,6 +28,10 @@ function ActivityList(props) {
     setSnackbarMsg,
     setEditing,
   } = props
+
+  const theme = {
+    spacing: [3, 5, 8],
+  }
 
   const deleteActivity = (i) => {
     // Get key of activity in firebase
@@ -50,15 +61,32 @@ function ActivityList(props) {
     setEditing(false)
   }
 
+  //dialog
+  const [open, setOpen] = React.useState(false)
+  const [selectedValue, setSelectedValue] = React.useState(
+    "Nothing selected yet"
+  )
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = (value) => {
+    setOpen(false)
+    setSelectedValue(value)
+  }
+
   return (
     <>
       {loading === true ? <img src={loader} alt={loader}></img> : ""}
 
       {activities === "not set" || activities === null ? (
-        <p>No activities added yet</p>
+        <div>
+          <p>No activities added yet</p>
+        </div>
       ) : (
         <TableContainer component={Paper}>
-          <Table>
+          <Table padding="normal">
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -102,6 +130,20 @@ function ActivityList(props) {
           </Table>
         </TableContainer>
       )}
+      <div></div>
+      <Typography align="center">
+        <AddCircleIcon mt={8} fontSize="large" />
+        <div></div>
+        <MyButton color="blue" onClick={handleClickOpen}>
+          Add new exercise
+        </MyButton>
+      </Typography>
+      <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
+      <SelectMuscleGroup
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
     </>
   )
 }

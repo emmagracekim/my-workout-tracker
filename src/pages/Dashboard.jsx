@@ -96,7 +96,6 @@ function Dashboard(props) {
             >
               <div className={classes.appBarSpacer} />
               <Container maxWidth="xl" className={classes.container}>
-                Calendar
                 <Calendar firebase={props.firebase} authUser={authUser} />
                 <Box pt={4}>
                   <Copyright />
