@@ -1,6 +1,6 @@
-import app from "firebase/app"
+import firebase from "firebase/app"
 import "firebase/auth"
-import "firebase/database"
+import "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBnZZ9R3F4ThtNKGFGML3oIle7Ed3aXhBs",
@@ -13,37 +13,34 @@ const firebaseConfig = {
   measurementId: "G-KTZ3DNSB5C",
 }
 
-class Firebase {
-  constructor() {
-    app.initializeApp(firebaseConfig)
-    this.auth = app.auth()
-    this.db = app.database()
-  }
+firebase.initializeApp(firebaseConfig)
 
-  /*** Authentication  ***/
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password)
+const auth = firebase.auth()
+const db = firebase.firestore()
 
-  doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password)
+/*** Authentication  ***/
+// const doCreateUserWithEmailAndPassword = (email, password) =>
+//   auth.createUserWithEmailAndPassword(email, password)
 
-  doSignOut = () => this.auth.signOut()
+// doSignInWithEmailAndPassword = (email, password) =>
+//   this.auth.signInWithEmailAndPassword(email, password)
 
-  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
+// doSignOut = () => this.auth.signOut()
 
-  // database
-  user = (uid) => this.db.ref(`users/${uid}`)
-  users = () => this.db.ref("users")
+// doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
 
-  addActivity = (uid, activity) => {
-    const ref = this.db.ref().child(`users/${uid}/activities`)
-    ref.push(activity)
-  }
+// // database
+// user = (uid) => this.db.ref(`users/${uid}`)
+// users = () => this.db.ref("users")
 
-  updateActivity = (uid, activity, activityKey) => {
-    const ref = this.db.ref().child(`users/${uid}/activities/${activityKey}`)
-    ref.update(activity)
-  }
-}
+// addActivity = (uid, activity) => {
+//   const ref = this.db.ref().child(`users/${uid}/activities`)
+//   ref.push(activity)
+// }
 
-export default Firebase
+// updateActivity = (uid, activity, activityKey) => {
+//   const ref = this.db.ref().child(`users/${uid}/activities/${activityKey}`)
+//   ref.update(activity)
+// }
+
+export { auth, db }
