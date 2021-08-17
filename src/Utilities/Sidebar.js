@@ -15,7 +15,7 @@ import IconButton from "@material-ui/core/IconButton"
 import List from "@material-ui/core/List"
 import Divider from "@material-ui/core/Divider"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
-import useStyles from "../../config/theme.dashboard"
+import useStyles from "../config/theme.dashboard"
 
 function Sidebar(props) {
   let match = useRouteMatch()

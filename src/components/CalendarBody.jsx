@@ -1,5 +1,5 @@
 import React from "react"
-import "./calendar.css"
+import "../Styling/calendar.css"
 import nextId from "react-id-generator"
 
 import Table from "@material-ui/core/Table"

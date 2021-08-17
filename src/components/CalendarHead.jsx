@@ -1,5 +1,5 @@
 import React from "react"
-import "./calendar.css"
+import "../Styling/calendar.css"
 
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"

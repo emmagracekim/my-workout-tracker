@@ -9,10 +9,10 @@ import Grid from "@material-ui/core/Grid"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 import useStyles from "../config/theme-signinup"
-import Copyright from "../components/Copyright"
+import Copyright from "../Utilities/Copyright"
 import { Link, withRouter } from "react-router-dom"
-import { withFirebase } from "../components/Firebase"
-import PasswordForget from "../components/PasswordForget"
+import { withFirebase } from "../components/Firebase/firebaseContext"
+import PasswordForget from "../Utilities/PasswordForget"
 
 function SignIn(props) {
   const classes = useStyles()

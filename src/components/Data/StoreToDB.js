@@ -15,7 +15,19 @@ const DB = () => {
   // list of all submitted exercises on selected day
   const [exerciseStats, setExerciseStats] = useState([])
 
-  db.push(exerciseList)
+  var exerRef = db.collection("exercises").doc(1)
+  exerRef
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Document data:", doc.data())
+      } else {
+        console.log("No such document exists")
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error)
+    })
 }
 
 export default DB

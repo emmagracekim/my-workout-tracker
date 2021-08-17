@@ -1,6 +1,10 @@
 import React from "react"
 
-import { withFirebase } from "../components/Firebase"
+import {
+  withAuthentication,
+  AuthUserContext,
+} from "./Firebase/withAuthentication"
+import { withFirebase } from "./Firebase/firebaseContext"
 import { withRouter } from "react-router-dom"
 
 import { Switch, Route, useRouteMatch } from "react-router-dom"
@@ -18,10 +22,9 @@ import MenuIcon from "@material-ui/icons/Menu"
 import NotificationsIcon from "@material-ui/icons/Notifications"
 
 import useStyles from "../config/theme.dashboard"
-import Copyright from "../components/Copyright"
-import Sidebar from "../components/Sidebar"
-import { AuthUserContext, withAuthentication } from "../components/Session"
-import Calendar from "../components/Calendar"
+import Copyright from "../Utilities/Copyright"
+import Sidebar from "../Utilities/Sidebar"
+import Calendar from "./Calendar"
 
 function Dashboard(props) {
   let match = useRouteMatch()

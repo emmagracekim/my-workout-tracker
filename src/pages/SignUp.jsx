@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { withFirebase } from "../components/Firebase"
+import { withFirebase } from "../components/Firebase/firebaseContext"
 import { Link, withRouter } from "react-router-dom"
 
 import Avatar from "@material-ui/core/Avatar"
@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 
 import useStyles from "../config/theme-signinup"
-import Copyright from "../components/Copyright"
+import Copyright from "../Utilities/Copyright"
 
 function SignUp(props) {
   const classes = useStyles()

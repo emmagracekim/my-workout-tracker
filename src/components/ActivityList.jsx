@@ -1,6 +1,6 @@
 import React from "react"
-import { withFirebase } from "../Firebase"
-import loader from "./loader.gif"
+import { withFirebase } from "./Firebase/firebaseContext"
+import loader from "../Utilities/loader.gif"
 
 import { spacing } from "@material-ui/system"
 import { Button } from "@material-ui/core"
@@ -17,7 +17,8 @@ import AddCircleIcon from "@material-ui/icons/AddCircle"
 import { Typography } from "@material-ui/core"
 import MyButton from "../Styling/MyButton"
 
-import SelectMuscleGroup from "../AddExerciseModal.js/SelectMuscleGroup"
+import SelectMuscleGroup from "./SelectMuscleGroup"
+import { Link, withRouter } from "react-router-dom"
 
 function ActivityList(props) {
   const {
@@ -135,15 +136,15 @@ function ActivityList(props) {
         <AddCircleIcon mt={8} fontSize="large" />
         <div></div>
         <MyButton color="blue" onClick={handleClickOpen}>
-          Add new exercise
+          <Link to="/create-workout">Add new exercise</Link>
         </MyButton>
       </Typography>
-      <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
-      <SelectMuscleGroup
+      {/* <Typography variant="subtitle1">Selected: {selectedValue}</Typography> */}
+      {/* <SelectMuscleGroup
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
-      />
+      /> */}
     </>
   )
 }

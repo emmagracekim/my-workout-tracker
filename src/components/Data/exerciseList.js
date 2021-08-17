@@ -1,7 +1,7 @@
 // all the main data in one list: muscle groups + each muscle's specific exercises
 const exerciseList = [
   {
-    muscle: "Abs",
+    muscle: "Chest",
     id: 1,
     exercises: [
       { id: 101, exercise: "Cable Flys" },

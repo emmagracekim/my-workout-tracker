@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
-import CalendarBody from "./calendar-body"
-import CalendarHeader from "./calendar-head"
+import CalendarBody from "./CalendarBody"
+import CalendarHeader from "./CalendarHead"
 import moment from "moment"
 import Grid from "@material-ui/core/Grid"
 import Paper from "@material-ui/core/Paper"
 import Snackbar from "@material-ui/core/Snackbar"
-import AddActivity from "../AddActivity/AddActivity"
-import ActivityList from "../ActivityList"
-import EditActivity from "../EditActivity"
+import AddActivity from "./AddActivity"
+import ActivityList from "./ActivityList"
+import EditActivity from "./EditActivity"
 
 function Calendar(props) {
   const { firebase, authUser } = props
@@ -111,7 +111,7 @@ function Calendar(props) {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={8} lg={9}>
+      <Grid item xs={20} md={100} lg={12}>
         <CalendarHeader
           allMonths={allMonths}
           currentMonth={currentMonth}
@@ -133,6 +133,8 @@ function Calendar(props) {
           activeDays={activeDays}
         />
       </Grid>
+
+      {/* //Add activity grid
       <Grid item xs={12} md={4} lg={3}>
         <Paper className="paper">
           {editing ? (
@@ -164,7 +166,7 @@ function Calendar(props) {
             </>
           )}
         </Paper>
-      </Grid>
+      </Grid> */}
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={openSnackbar}

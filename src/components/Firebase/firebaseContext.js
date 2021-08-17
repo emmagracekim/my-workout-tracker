@@ -1,6 +1,4 @@
-import { React, useState, useEffect, createContext, useContext } from "react"
-import { auth } from "./emmafirebase"
-import { Link, withRouter } from "react-router-dom"
+import React from "react"
 
 const FirebaseContext = React.createContext(null)
 
