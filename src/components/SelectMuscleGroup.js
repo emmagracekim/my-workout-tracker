@@ -19,6 +19,19 @@ import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
 
+const styleObj = {
+  fontSize: 16,
+  color: "#03A9F4",
+  textAlign: "center",
+  paddingTop: "10px",
+  fontFamily: "Arial",
+  fontWeight: "bold",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexWrap: "wrap",
+}
+
 const SelectMuscleGroup = ({
   closeCard,
   openExerciseModal,
@@ -26,23 +39,29 @@ const SelectMuscleGroup = ({
   setMuscleGroup,
 }) => {
   return (
-    <div className={`${isCardOpen ? "block" : "hidden"}`}>
+    <div style={{ display: isCardOpen ? "block" : "none" }}>
       <Card>
         <CardContent>
-          <div className="">
+          <div className="" style={styleObj}>
             <p>Select muscle group</p>
             <div onClick={closeCard} aria-label="Close">
               <Close aria-label="Close" />
             </div>
           </div>
 
-          <div className="flex justify-center flex-wrap ">
+          <div className="">
             {exerciseList.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
                 <button
                   aria-label="Muscle Select"
                   onClick={() => setMuscleGroup(e)}
-                  className="text-sm md:text-base shadow-lg m-1.5 h-10 px-5 sm:m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
+                  style={{
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                  }}
                 >
                   {e.muscle}
                 </button>

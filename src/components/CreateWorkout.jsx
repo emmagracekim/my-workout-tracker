@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/styles"
+import theme from "../config/theme.config"
 import {
   Button,
   Card,
@@ -18,6 +20,10 @@ import { Add } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { AuthUserContext } from "./Firebase/withAuthentication"
 import SelectMuscleGroup from "./SelectMuscleGroup"
+import AddExercise from "./AddExercise"
+import AddExerciseModal from "./AddExerciseModal"
+import Delete from "@material-ui/icons/Delete"
+import AddSet from "./AddSet"
 
 const CreateWorkout = ({ selectedDate }) => {
   //   const { user } = AuthUserContext
@@ -60,20 +66,67 @@ const CreateWorkout = ({ selectedDate }) => {
   //array list of all submitted exercises on that day
   const [exerciseStats, setExerciseStats] = useState([])
 
+  const handleDeleteCurrentExercise = () => {
+    setCurrentExerciseData({
+      currentExer: "",
+      notes: "",
+      sets: [],
+    })
+    setIsExerciseOpen(false)
+  }
+
   return (
     <main className="className">
-      <SelectMuscleGroup
-        closeCard={closeCard}
-        openExerciseModal={openExerciseModal}
-        isCardOpen={isCardOpen}
-        setMuscleGroup={setMuscleGroup}
-      />
+      <ThemeProvider theme={theme}>
+        <SelectMuscleGroup
+          closeCard={closeCard}
+          openExerciseModal={openExerciseModal}
+          isCardOpen={isCardOpen}
+          setMuscleGroup={setMuscleGroup}
+        />
 
-      {/* {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
-        <div></div>
-      ) : (
-        <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
-      )} */}
+        {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
+          <div></div>
+        ) : (
+          <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
+        )}
+
+        <AddExerciseModal
+          isExerciseModalOpen={isExerciseModalOpen}
+          closeExerciseModal={closeExerciseModal}
+          muscleGroup={muscleGroup}
+          setCurrentExerciseData={setCurrentExerciseData}
+          currentExerciseData={currentExerciseData}
+        />
+
+        {currentExerciseData.currentExer.length > 0 && (
+          <div style={{ display: isExerciseOpen ? "block" : "none" }}>
+            <Card>
+              <CardContent>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <p>{currentExerciseData.currentExer}</p>
+                  <div
+                    onClick={handleDeleteCurrentExercise}
+                    aria-label="delete"
+                  >
+                    <Delete aria-label="delete" fontSize="medium" />
+                  </div>
+                </div>
+
+                <AddSet openRepsSetsModal={openRepsSetsModal} />
+              </CardContent>
+            </Card>
+          </div>
+        )}
+      </ThemeProvider>
     </main>
   )
 }
