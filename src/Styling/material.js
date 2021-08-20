@@ -16,5 +16,6 @@ export const useStyles = makeStyles({
     height: 40,
     padding: "0 20px",
     margin: 8,
+    justifyItems: "center",
   },
 })

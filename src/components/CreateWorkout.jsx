@@ -112,7 +112,11 @@ const CreateWorkout = ({ selectedDate }) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <p>{currentExerciseData.currentExer}</p>
+                  <div
+                    style={{ fontFamily: "sans-serif", fontWeight: "bolder" }}
+                  >
+                    {currentExerciseData.currentExer}
+                  </div>
                   <div
                     onClick={handleDeleteCurrentExercise}
                     aria-label="delete"

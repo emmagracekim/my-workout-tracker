@@ -2,6 +2,7 @@ import { Dialog, DialogContent } from "@material-ui/core"
 import { DialogTitle, ListItem, List } from "@material-ui/core"
 import { Fragment } from "react"
 import produce from "immer"
+import MyButton from "../Styling/MyButton"
 
 const AddExerciseModal = ({
   isExerciseModalOpen,
@@ -14,14 +15,15 @@ const AddExerciseModal = ({
     <Fragment>
       <Dialog open={isExerciseModalOpen} onClose={closeExerciseModal}>
         <DialogTitle id="select-exercise-title">
-          {"Select exercise"}
+          {"Select Exercise"}
         </DialogTitle>
         <DialogContent>
           <div className="">
             {muscleGroup &&
               muscleGroup.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>
-                  <button
+                  <MyButton
+                    color="red"
                     aria-label="Exercise options"
                     onClick={() =>
                       setCurrentExerciseData(
@@ -32,7 +34,7 @@ const AddExerciseModal = ({
                     }
                   >
                     {e.exercise}
-                  </button>
+                  </MyButton>
                 </div>
               ))}
           </div>

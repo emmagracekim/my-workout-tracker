@@ -18,10 +18,11 @@ import { Add } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
+import MyButton from "../Styling/MyButton"
 
 const styleObj = {
   fontSize: 16,
-  color: "#03A9F4",
+  //color: "#03A9F4",
   textAlign: "center",
   paddingTop: "10px",
   fontFamily: "Arial",
@@ -43,7 +44,7 @@ const SelectMuscleGroup = ({
       <Card>
         <CardContent>
           <div className="" style={styleObj}>
-            <p>Select muscle group</p>
+            <DialogTitle>Select Muscle Group</DialogTitle>
             <div onClick={closeCard} aria-label="Close">
               <Close aria-label="Close" />
             </div>
@@ -52,19 +53,20 @@ const SelectMuscleGroup = ({
           <div className="">
             {exerciseList.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
-                <button
+                <MyButton
+                  color="red"
                   aria-label="Muscle Select"
                   onClick={() => setMuscleGroup(e)}
-                  style={{
-                    fontFamily: "sans-serif",
-                    fontWeight: "bold",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                  }}
+                  // style={{
+                  //   fontFamily: "sans-serif",
+                  //   fontWeight: "bold",
+                  //   alignItems: "center",
+                  //   justifyContent: "space-between",
+                  //   flexWrap: "wrap",
+                  // }}
                 >
                   {e.muscle}
-                </button>
+                </MyButton>
               </div>
             ))}
           </div>
