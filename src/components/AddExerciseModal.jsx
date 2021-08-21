@@ -4,6 +4,19 @@ import { Fragment } from "react"
 import produce from "immer"
 import MyButton from "../Styling/MyButton"
 
+const styleObj = {
+  fontSize: 16,
+  //color: "#03A9F4",
+  textAlign: "center",
+  paddingTop: "10px",
+  fontFamily: "Arial",
+  fontWeight: "bold",
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  flexWrap: "wrap",
+}
+
 const AddExerciseModal = ({
   isExerciseModalOpen,
   closeExerciseModal,
@@ -18,7 +31,7 @@ const AddExerciseModal = ({
           {"Select Exercise"}
         </DialogTitle>
         <DialogContent>
-          <div className="">
+          <div className="" style={styleObj}>
             {muscleGroup &&
               muscleGroup.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>

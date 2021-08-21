@@ -1,4 +1,5 @@
 import React from "react"
+
 import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -19,6 +20,7 @@ import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
 import MyButton from "../Styling/MyButton"
+import "../Styling/select-muscle-group.css"
 
 const styleObj = {
   fontSize: 16,
@@ -50,7 +52,7 @@ const SelectMuscleGroup = ({
             </div>
           </div>
 
-          <div className="">
+          <div className="" style={styleObj}>
             {exerciseList.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
                 <MyButton

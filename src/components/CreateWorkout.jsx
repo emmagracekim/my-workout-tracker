@@ -24,6 +24,8 @@ import AddExercise from "./AddExercise"
 import AddExerciseModal from "./AddExerciseModal"
 import Delete from "@material-ui/icons/Delete"
 import AddSet from "./AddSet"
+import RepsSetsDisplay from "./RepsSetsDisplay"
+import produce from "immer"
 
 const CreateWorkout = ({ selectedDate }) => {
   //   const { user } = AuthUserContext
@@ -126,6 +128,32 @@ const CreateWorkout = ({ selectedDate }) => {
                 </div>
 
                 <AddSet openRepsSetsModal={openRepsSetsModal} />
+
+                {currentExerciseData.sets.length > 0 && (
+                  <RepsSetsDisplay
+                    currentExerciseData={currentExerciseData}
+                    setCurrentExerciseData={setCurrentExerciseData}
+                    setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
+                  />
+                )}
+                {currentExerciseData.sets.length > 0 && (
+                  <div>
+                    <p className="">Notes</p>
+                    <div className="">
+                      <textarea
+                        aria-label="notes"
+                        onChange={(e) =>
+                          setCurrentExerciseData(
+                            produce(currentExerciseData, (draft) => {
+                              draft.notes = e.target.value
+                            })
+                          )
+                        }
+                        className=""
+                      ></textarea>
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
