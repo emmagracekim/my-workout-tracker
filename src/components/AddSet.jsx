@@ -1,3 +1,4 @@
+import { IconButton } from "@material-ui/core"
 import AddCircle from "@material-ui/icons/AddCircle"
 
 const styleObj = {
@@ -11,10 +12,14 @@ const styleObj = {
 
 const AddSet = ({ openRepsSetsModal }) => {
   return (
-    <div aria-label="Add Set" onClick={openRepsSetsModal} style={styleObj}>
-      <AddCircle aria-label="Add Set" />
+    <IconButton
+      aria-label="Add Set"
+      onClick={openRepsSetsModal}
+      style={styleObj}
+    >
+      <AddCircle aria-label="Add Set" fontSize="large" />
       <p>Add Set</p>
-    </div>
+    </IconButton>
   )
 }
 

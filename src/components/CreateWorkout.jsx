@@ -26,6 +26,7 @@ import Delete from "@material-ui/icons/Delete"
 import AddSet from "./AddSet"
 import RepsSetsDisplay from "./RepsSetsDisplay"
 import produce from "immer"
+import RepsSetsModal from "./RepsSetsModal"
 
 const CreateWorkout = ({ selectedDate }) => {
   //   const { user } = AuthUserContext
@@ -154,6 +155,13 @@ const CreateWorkout = ({ selectedDate }) => {
                     </div>
                   </div>
                 )}
+                <RepsSetsModal
+                  isRepsSetsModalOpen={isRepsSetsModalOpen}
+                  setCurrentExerciseData={setCurrentExerciseData}
+                  currentExerciseData={currentExerciseData}
+                  setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
+                />
+                <div></div>
               </CardContent>
             </Card>
           </div>
