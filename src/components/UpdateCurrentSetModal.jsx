@@ -66,6 +66,20 @@ const UpdateCurrentSetsModal = ({
                 />
               </div>
             </div>
+            <div>
+              <div className="">
+                <label>Reps</label>
+              </div>
+              <div className="">
+                <input
+                  type="number"
+                  name="reps"
+                  onChange={handleChange}
+                  required
+                  value={currSet.reps}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </DialogContent>
