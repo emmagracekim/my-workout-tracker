@@ -1,5 +1,5 @@
 import React from "react"
-import { withFirebase } from "./Firebase/firebaseContext"
+import { withFirebase } from "./Firebase_2/firebaseContext"
 import loader from "../Utilities/loader.gif"
 
 import { spacing } from "@material-ui/system"

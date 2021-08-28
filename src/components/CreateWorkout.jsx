@@ -15,20 +15,26 @@ import {
   DialogTitle,
   Dialog,
   Typography,
+  IconButton,
 } from "@material-ui/core"
-import { Add } from "@material-ui/icons"
+import { Add, AssignmentTurnedIn } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
-import { AuthUserContext } from "./Firebase/withAuthentication"
+import { AuthUserContext } from "./Firebase_2/withAuthentication"
+import firebase from "firebase/app"
+import { withFirebase } from "./Firebase_2/firebaseContext"
 import SelectMuscleGroup from "./SelectMuscleGroup"
 import AddExercise from "./AddExercise"
 import AddExerciseModal from "./AddExerciseModal"
 import Delete from "@material-ui/icons/Delete"
 import AddSet from "./AddSet"
 import RepsSetsDisplay from "./RepsSetsDisplay"
-import produce from "immer"
+import produce, { current } from "immer"
 import RepsSetsModal from "./RepsSetsModal"
 
-const CreateWorkout = ({ selectedDate }) => {
+const CreateWorkout = (props) => {
+  const { firebase, authUser, selectedDate } = props
+  const { user } = authUser
+  const db = firebase.firestore()
   //   const { user } = AuthUserContext
 
   //muscle group card component
@@ -68,6 +74,33 @@ const CreateWorkout = ({ selectedDate }) => {
 
   //array list of all submitted exercises on that day
   const [exerciseStats, setExerciseStats] = useState([])
+
+  const submitExerciseData = async () => {
+    await db
+      .collection("profiles")
+      //  await
+      //    .doc(user.uid)
+      //    .collection("workouts")
+      //    .add({
+      //      exercise: currentExerciseData.currentExer,
+      //      sets: currentExerciseData.sets,
+      //      profileId: user.uid,
+      //      date: selectedDate,
+      //      notes: currentExerciseData.notes,
+      //    })
+      //    .then(() => {
+      //      console.log("Document successfully written")
+      //    })
+      //    .catch((error) => {
+      //      console.log("Error writing document: ", error)
+      //    })
+
+      .setCurrentExerciseData({
+        currentExer: "",
+        notes: "",
+        sets: [],
+      })
+  }
 
   const handleDeleteCurrentExercise = () => {
     setCurrentExerciseData({
@@ -161,7 +194,11 @@ const CreateWorkout = ({ selectedDate }) => {
                   currentExerciseData={currentExerciseData}
                   setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
                 />
-                <div></div>
+                <IconButton onClick={submitExerciseData} className="">
+                  {currentExerciseData.sets.length > 0 && (
+                    <AssignmentTurnedIn />
+                  )}
+                </IconButton>
               </CardContent>
             </Card>
           </div>

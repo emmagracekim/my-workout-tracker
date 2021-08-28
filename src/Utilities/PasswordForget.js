@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { withFirebase } from "../components/Firebase/firebaseContext"
+import { withFirebase } from "../components/Firebase_2/firebaseContext"
 import { Link } from "react-router-dom"
 
 import Button from "@material-ui/core/Button"

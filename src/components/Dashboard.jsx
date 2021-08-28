@@ -3,8 +3,8 @@ import React from "react"
 import {
   withAuthentication,
   AuthUserContext,
-} from "./Firebase/withAuthentication"
-import { withFirebase } from "./Firebase/firebaseContext"
+} from "./Firebase_2/withAuthentication"
+import { withFirebase } from "./Firebase_2/firebaseContext"
 import { withRouter } from "react-router-dom"
 
 import { Switch, Route, useRouteMatch } from "react-router-dom"

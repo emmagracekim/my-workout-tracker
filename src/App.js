@@ -7,10 +7,14 @@ import theme from "./config/theme.config"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import Dashboard from "./components/Dashboard"
-import { AuthUserContext } from "./components/Firebase/withAuthentication"
+import {
+  AuthUserContext,
+  withAuthentication,
+} from "./components/Firebase_2/withAuthentication"
+import { withFirebase } from "./components/Firebase_2/firebaseContext"
 import CreateWorkout from "./components/CreateWorkout"
 
-function App({ Component, pageProps }) {
+function App(props, { Component, pageProps }) {
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -25,7 +29,18 @@ function App({ Component, pageProps }) {
             <Dashboard />
           </Route>
           <Route path="/create-workout">
-            <CreateWorkout />
+            <AuthUserContext.Consumer>
+              {(authUser) =>
+                authUser ? (
+                  <CreateWorkout
+                    firebase={props.firebase}
+                    authUser={authUser}
+                  />
+                ) : (
+                  <p>Not authorized</p>
+                )
+              }
+            </AuthUserContext.Consumer>
           </Route>
         </Switch>
       </ThemeProvider>
@@ -33,4 +48,4 @@ function App({ Component, pageProps }) {
   )
 }
 
-export default App
+export default withAuthentication(App)

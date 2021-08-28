@@ -1,7 +1,7 @@
 import { React, useState } from "react"
 import firebase from "firebase"
 import { AuthUserContext } from "../Session"
-import { db } from "../Firebase/emmafirebase"
+import { db } from "../Firebase_2/emmafirebase"
 import { exerciseList } from "./exerciseList"
 
 const DB = () => {
