@@ -21,7 +21,6 @@ import { Add, AssignmentTurnedIn } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { AuthUserContext } from "./Firebase_2/withAuthentication"
 import firebase from "firebase/app"
-import { withFirebase } from "./Firebase_2/firebaseContext"
 import SelectMuscleGroup from "./SelectMuscleGroup"
 import AddExercise from "./AddExercise"
 import AddExerciseModal from "./AddExerciseModal"
@@ -30,12 +29,12 @@ import AddSet from "./AddSet"
 import RepsSetsDisplay from "./RepsSetsDisplay"
 import produce, { current } from "immer"
 import RepsSetsModal from "./RepsSetsModal"
+import { useAuth } from "./Data/authProvider"
+import { db } from "./Data/firebase"
 
-const CreateWorkout = (props) => {
-  const { firebase, authUser, selectedDate } = props
-  const { user } = authUser
-  const db = firebase.firestore()
+const CreateWorkout = ({ selectedDate }) => {
   //   const { user } = AuthUserContext
+  const { user } = useAuth()
 
   //muscle group card component
   const [isCardOpen, setIsCardOpen] = useState(false)
@@ -78,28 +77,28 @@ const CreateWorkout = (props) => {
   const submitExerciseData = async () => {
     await db
       .collection("profiles")
-      //  await
-      //    .doc(user.uid)
-      //    .collection("workouts")
-      //    .add({
-      //      exercise: currentExerciseData.currentExer,
-      //      sets: currentExerciseData.sets,
-      //      profileId: user.uid,
-      //      date: selectedDate,
-      //      notes: currentExerciseData.notes,
-      //    })
-      //    .then(() => {
-      //      console.log("Document successfully written")
-      //    })
-      //    .catch((error) => {
-      //      console.log("Error writing document: ", error)
-      //    })
-
-      .setCurrentExerciseData({
-        currentExer: "",
-        notes: "",
-        sets: [],
+      .doc(user.uid)
+      .collection("workouts")
+      .add({
+        exercise: currentExerciseData.currentExer,
+        sets: currentExerciseData.sets,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        profileId: user.uid,
+        date: selectedDate,
+        notes: currentExerciseData.notes,
       })
+      .then(() => {
+        console.log("Document successfully written")
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error)
+      })
+
+    setCurrentExerciseData({
+      currentExer: "",
+      notes: "",
+      sets: [],
+    })
   }
 
   const handleDeleteCurrentExercise = () => {
@@ -203,6 +202,14 @@ const CreateWorkout = (props) => {
             </Card>
           </div>
         )}
+
+        <div className="">
+          <DisplayExercisesAfterSubmit
+            selectedDate={selectedDate}
+            exerciseStats={exerciseStats}
+            setExerciseStats={setExerciseStats}
+          />
+        </div>
       </ThemeProvider>
     </main>
   )

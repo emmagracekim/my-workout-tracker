@@ -8,9 +8,11 @@ import format from "date-fns/format"
 import { db } from "../components/Data/firebase"
 import React from "react"
 import CreateWorkout from "../components/CreateWorkout"
+import NavBar from "../components/NavBar"
+import history from "../history"
 
 const Home = () => {
-  const history = useHistory()
+  // const history = useHistory()
   const { user } = useAuth()
 
   const [startDate, setStartDate] = useState(new Date())
@@ -43,9 +45,7 @@ const Home = () => {
     }
   }, [user])
 
-  const DateButton = ({ value }) => {
-    ;<p className="">{value}</p>
-  }
+  const DateButton = ({ value }) => <p className="">{value}</p>
 
   return (
     <React.Fragment>
@@ -69,7 +69,7 @@ const Home = () => {
             selectedDate={formattedDate}
             handleDateChange={handleDateChange}
           />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </section>
     </React.Fragment>
