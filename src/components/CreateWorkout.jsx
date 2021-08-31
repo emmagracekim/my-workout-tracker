@@ -31,6 +31,7 @@ import produce, { current } from "immer"
 import RepsSetsModal from "./RepsSetsModal"
 import { useAuth } from "./Data/authProvider"
 import { db } from "./Data/firebase"
+import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit"
 
 const CreateWorkout = ({ selectedDate }) => {
   //   const { user } = AuthUserContext

@@ -26,7 +26,7 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
 
   const { user, logout } = useAuth()
 
-//   const history = useHistory()
+  //   const history = useHistory()
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,21 +47,15 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
         <div>
           <div>
             <div>
-              <div
-                onClick={() => {
-                  history.push("/home")
-                }}
-              >
+              <Link to="/home">
                 <GiWeightLiftingUp />
-              </div>
+              </Link>
 
               <div className="md:block">
                 <div className="">
-                  <div aria-label="Home" onClick={() => {
-                  history.push("/home")
-                }}>
-                      <HomeRounded aria-label="Home" />
-                  </div>
+                  <Link to="/home">
+                    <HomeRounded aria-label="Home" />
+                  </Link>
 
                   <ReactDatePicker
                     aria-label="Calendar"

@@ -1,5 +1,5 @@
-import React from "react"
-import { Router, Switch, Route, Link } from "react-router-dom"
+import { React, useEffect } from "react"
+import { Router, Switch, Route, Link, Redirect } from "react-router-dom"
 
 import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "./config/theme.config"
@@ -14,47 +14,42 @@ import {
 import { withFirebase } from "./components/Firebase_2/firebaseContext"
 import CreateWorkout from "./components/CreateWorkout"
 import Home from "./pages/Home"
-import { useAuth } from "./components/Data/authProvider"
+import { AuthProvider, useAuth } from "./components/Data/authProvider"
 import history from "./history"
-import Login from "./components/Login"
+import Login from "./pages/Login"
+import Profile from "./pages/Profile"
 
-function App(props, { Component, pageProps }) {
+function App() {
   const { user, loading } = useAuth()
 
+  useEffect(() => {
+    if (!user) {
+      ;<Redirect to="/" />
+    }
+  }, [user])
+
   return (
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          {/* <Route path="/create-workout"> */}
-          {/* <AuthUserContext.Consumer>
-              {(authUser) =>
-                authUser ? (
-                  <CreateWorkout
-                    firebase={props.firebase}
-                    authUser={authUser}
-                  />
-                ) : (
-                  <p>Not authorized</p>
-                )
-              }
-            </AuthUserContext.Consumer> */}
-          {/* </Route> */}
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
-      </ThemeProvider>
-    </Router>
+    <AuthProvider>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route exact path="/">
+              <Login />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+        </ThemeProvider>
+      </Router>
+    </AuthProvider>
   )
 }
 
-export default withAuthentication(App)
+export default App

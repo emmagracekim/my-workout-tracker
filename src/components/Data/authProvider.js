@@ -1,6 +1,6 @@
 import { react, useState, useEffect, createContext, useContext } from "react"
 import { auth } from "./firebase"
-import { Router, withRouter, Route } from "react-router"
+import { Router, withRouter, Route, Link } from "react-router"
 import { useHistory } from "react-router-dom"
 
 const AuthContext = createContext({

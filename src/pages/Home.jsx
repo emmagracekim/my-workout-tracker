@@ -10,6 +10,7 @@ import React from "react"
 import CreateWorkout from "../components/CreateWorkout"
 import NavBar from "../components/NavBar"
 import history from "../history"
+import { Link } from "react-router-dom"
 
 const Home = () => {
   // const history = useHistory()
@@ -41,7 +42,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!user) {
-      history.push("/")
+      ;<Link to="/"></Link>
     }
   }, [user])
 

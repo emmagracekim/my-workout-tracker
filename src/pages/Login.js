@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core"
-import { auth, uiConfig } from "./Data/firebase"
+import { auth, uiConfig } from "../components/Data/firebase"
 import { StyledFirebaseAuth } from "react-firebaseui"
 
 const Login = () => {
