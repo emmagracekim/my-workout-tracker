@@ -63,23 +63,25 @@ const DisplayExercisesAfterSubmit = ({
   }
 
   const getExerciseStats = async () => {
-    await db
-      .collection("profiles")
-      .doc(user.uid)
-      .collection("workouts")
-      .where("date", "==", selectedDate)
-      .orderBy("timeStamp", "asc")
-      .onSnapshot((querySnapshot) => {
-        setExerciseStats(
-          querySnapshot.docs.map((doc) => ({
-            timeStamp: doc.data().timeStamp,
-            exercise: doc.data().exercise,
-            sets: doc.data().sets,
-            id: doc.id,
-            notes: doc.data().notes,
-          }))
-        )
-      })
+    if (user) {
+      await db
+        .collection("profiles")
+        .doc(user.uid)
+        .collection("workouts")
+        .where("date", "==", selectedDate)
+        .orderBy("timeStamp", "asc")
+        .onSnapshot((querySnapshot) => {
+          setExerciseStats(
+            querySnapshot.docs.map((doc) => ({
+              timeStamp: doc.data().timeStamp,
+              exercise: doc.data().exercise,
+              sets: doc.data().sets,
+              id: doc.id,
+              notes: doc.data().notes,
+            }))
+          )
+        })
+    }
   }
 
   useEffect(() => {
