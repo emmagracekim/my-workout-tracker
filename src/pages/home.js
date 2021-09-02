@@ -11,10 +11,13 @@ import CreateWorkout from "../components/CreateWorkout"
 import NavBar from "../components/NavBar"
 import history from "../history"
 import { Link } from "react-router-dom"
+import { useRouter } from "next/dist/client/router"
+import Head from "next/dist/shared/lib/head"
 
 const Home = () => {
   // const history = useHistory()
   const { user } = useAuth()
+  const router = useRouter()
 
   const [startDate, setStartDate] = useState(new Date())
   const [exerciseDates, setExerciseDates] = useState([])
@@ -42,7 +45,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!user) {
-      ;<Link to="/"></Link>
+      router.push("/")
     }
   }, [user])
 

@@ -63,7 +63,6 @@ const DisplayExercisesAfterSubmit = ({
   }
 
   const getExerciseStats = async () => {
-    if (user) {
       await db
         .collection("profiles")
         .doc(user.uid)
@@ -82,7 +81,6 @@ const DisplayExercisesAfterSubmit = ({
           )
         })
     }
-  }
 
   useEffect(() => {
     if ((user, selectedDate)) {

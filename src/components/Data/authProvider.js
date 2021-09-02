@@ -1,7 +1,6 @@
 import { react, useState, useEffect, createContext, useContext } from "react"
 import { auth } from "./firebase"
-import { Router, withRouter, Route, Link } from "react-router"
-import { useHistory } from "react-router-dom"
+import { useRouter } from "next/dist/client/router"
 
 const AuthContext = createContext({
   user: null,
@@ -13,7 +12,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const history = useHistory()
+  const router = useRouter()
 
   useEffect(() => {
     const cancelAuthListener = auth.onAuthStateChanged((u) => {
@@ -31,7 +30,7 @@ const AuthProvider = ({ children }) => {
         loading,
         logout: () => {
           auth.signOut()
-          history.push("/")
+          router.push("/")
         },
       }}
     >

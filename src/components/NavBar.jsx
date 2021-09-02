@@ -1,14 +1,12 @@
 import { React, useState, useRef, useEffect, useContext } from "react"
 import { useAuth } from "./Data/authProvider"
-import { withRouter, Route, Redirect } from "react-router"
-import { useHistory } from "react-router"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { GiWeightLiftingUp } from "react-icons/gi"
 import { HomeRounded, TodayRounded } from "@material-ui/icons"
-import { Link } from "react-router-dom"
 import { Transition } from "@headlessui/react"
-import history from "../history"
+import { useRouter } from "next/dist/client/router"
+import { Router } from "react-router"
 
 const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
   const [profileOpen, setProfileOpen] = useState(false)
@@ -25,6 +23,8 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
   const wrapperRef = useRef(null)
 
   const { user, logout } = useAuth()
+
+  const router = useRouter()
 
   //   const history = useHistory()
 
@@ -47,15 +47,26 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
         <div>
           <div>
             <div>
-              <Link to="/home">
+              <div
+                className=""
+                onClick={() => {
+                  router.push("/home")
+                }}
+              >
                 <GiWeightLiftingUp />
-              </Link>
+              </div>
 
               <div className="md:block">
                 <div className="">
-                  <Link to="/home">
+                  <a
+                    href="/#"
+                    aria-label="Home"
+                    onClick={() => {
+                      router.push("/home")
+                    }}
+                  >
                     <HomeRounded aria-label="Home" />
-                  </Link>
+                  </a>
 
                   <ReactDatePicker
                     aria-label="Calendar"
@@ -118,26 +129,34 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                       aria-orientation="vertical"
                       aria-labelledby="user-menu"
                     >
-                      <div className="" role="menuitem" tabIndex="0">
-                        <Link to="/profile">Profile</Link>
-                      </div>
+                      <a
+                        href="/#"
+                        className=""
+                        role="menuitem"
+                        tabIndex="0"
+                        onClick={() => router.push("/profile")}
+                      >
+                        Profile
+                      </a>
 
-                      <div
+                      <a
+                        href="/#"
                         className=""
                         role="menuitem"
                         tabIndex="0"
                         onClick={logout}
                       >
                         Sign out
-                      </div>
-                      <div
+                      </a>
+                      <a
+                        href="/#"
                         className=""
                         role="menuitem"
                         tabIndex="0"
                         onClick={openDeleteModal}
                       >
                         Delete account
-                      </div>
+                      </a>
                     </div>
                   </Transition>
                 </div>
@@ -150,4 +169,4 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
   )
 }
 
-export default withRouter(Nav)
+export default Nav

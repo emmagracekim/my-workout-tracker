@@ -34,9 +34,9 @@ function App() {
   useEffect(() => {
     if (user) {
       // ;<Link to="/home" />
-      history.push({
-        pathname: "/home",
-      })
+      // history.push({
+      //   pathname: "/home",
+      // })
     }
   }, [user])
 
@@ -47,29 +47,30 @@ function App() {
   }, [user])
 
   return (
-    //  <AuthProvider>
-    <BrowserRouter history={history}>
-      <ThemeProvider theme={theme}>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() =>
-              user ? <Route component={Home} /> : <Route component={Login} />
-            }
-          ></Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
-      </ThemeProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter history={history}>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() =>
+                user ? <Route component={Home} /> : <Route component={Login} />
+              }
+            ></Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
