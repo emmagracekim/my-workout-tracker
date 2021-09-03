@@ -19,8 +19,8 @@ import { Add } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
-import MyButton from "../Styling/MyButton"
-import "../Styling/select-muscle-group.css"
+import MyButton from "../styles/MyButton"
+import "../styles/select-muscle-group.css"
 
 const styleObj = {
   fontSize: 16,

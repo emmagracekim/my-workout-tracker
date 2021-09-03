@@ -2,7 +2,7 @@ import { Dialog, DialogContent } from "@material-ui/core"
 import { DialogTitle, ListItem, List } from "@material-ui/core"
 import { Fragment } from "react"
 import produce from "immer"
-import MyButton from "../Styling/MyButton"
+import MyButton from "../styles/MyButton"
 
 const styleObj = {
   fontSize: 16,

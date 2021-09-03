@@ -5,6 +5,7 @@ import Head from "next/head"
 import React from "react"
 import { ThemeProvider } from "@material-ui/styles"
 import theme from "../config/theme.config"
+import tailwindcss from "tailwindcss"
 
 function MyApp({ Component, pageProps }) {
   return (
