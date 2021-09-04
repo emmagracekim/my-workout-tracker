@@ -1,11 +1,10 @@
 import "../styles/globals.css"
 import { AuthProvider } from "../components/Data/authProvider"
-import { Header } from "next/dist/lib/load-custom-routes"
 import Head from "next/head"
 import React from "react"
 import { ThemeProvider } from "@material-ui/styles"
-import theme from "../config/theme.config"
-import tailwindcss from "tailwindcss"
+import theme from "../config/theme"
+import { Windmill } from "@windmill/react-ui"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,9 +17,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </Head>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
+        <Windmill usePreferences theme={theme}>
           <Component {...pageProps} />
-        </ThemeProvider>
+        </Windmill>
       </AuthProvider>
     </React.Fragment>
   )

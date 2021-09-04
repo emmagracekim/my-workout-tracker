@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+html,
+body {
   min-height: 100vh;
   @apply bg-gray-200 transition-all;
 }

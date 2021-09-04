@@ -1,25 +1,9 @@
 import { React, useState, useEffect } from "react"
-import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import { ThemeProvider } from "@material-ui/styles"
-import theme from "../config/theme.config"
-import {
-  Button,
-  Card,
-  CardContent,
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  DialogTitle,
-  Dialog,
-  Typography,
-  IconButton,
-} from "@material-ui/core"
+import theme from "../config/theme"
+import { Button, IconButton } from "@material-ui/core"
+import { Card, CardBody } from "@windmill/react-ui"
 import { Add, AssignmentTurnedIn } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
-import { AuthUserContext } from "./Firebase_2/withAuthentication"
 import firebase from "firebase/app"
 import SelectMuscleGroup from "./SelectMuscleGroup"
 import AddExercise from "./AddExercise"
@@ -113,105 +97,96 @@ const CreateWorkout = ({ selectedDate }) => {
 
   return (
     <main className="className">
-      <ThemeProvider theme={theme}>
-        <SelectMuscleGroup
-          closeCard={closeCard}
-          openExerciseModal={openExerciseModal}
-          isCardOpen={isCardOpen}
-          setMuscleGroup={setMuscleGroup}
-        />
+      <SelectMuscleGroup
+        closeCard={closeCard}
+        openExerciseModal={openExerciseModal}
+        isCardOpen={isCardOpen}
+        setMuscleGroup={setMuscleGroup}
+      />
 
-        {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
-          <div></div>
-        ) : (
-          <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
-        )}
+      {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
+        <div></div>
+      ) : (
+        <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
+      )}
 
-        <AddExerciseModal
-          isExerciseModalOpen={isExerciseModalOpen}
-          closeExerciseModal={closeExerciseModal}
-          muscleGroup={muscleGroup}
-          setCurrentExerciseData={setCurrentExerciseData}
-          currentExerciseData={currentExerciseData}
-        />
+      <AddExerciseModal
+        isExerciseModalOpen={isExerciseModalOpen}
+        closeExerciseModal={closeExerciseModal}
+        muscleGroup={muscleGroup}
+        setCurrentExerciseData={setCurrentExerciseData}
+        currentExerciseData={currentExerciseData}
+      />
 
-        {currentExerciseData.currentExer.length > 0 && (
-          <div style={{ display: isExerciseOpen ? "block" : "none" }}>
-            <Card>
-              <CardContent>
-                <div
-                  className=""
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <div
-                    style={{ fontFamily: "sans-serif", fontWeight: "bolder" }}
-                  >
-                    {currentExerciseData.currentExer}
-                  </div>
-                  <div
-                    onClick={handleDeleteCurrentExercise}
-                    aria-label="delete"
-                  >
-                    <Delete aria-label="delete" fontSize="medium" />
-                  </div>
+      {currentExerciseData.currentExer.length > 0 && (
+        <div style={{ display: isExerciseOpen ? "block" : "none" }}>
+          <Card>
+            <CardBody>
+              <div
+                className=""
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <div style={{ fontFamily: "sans-serif", fontWeight: "bolder" }}>
+                  {currentExerciseData.currentExer}
                 </div>
+                <div onClick={handleDeleteCurrentExercise} aria-label="delete">
+                  <Delete aria-label="delete" fontSize="medium" />
+                </div>
+              </div>
 
-                <AddSet openRepsSetsModal={openRepsSetsModal} />
+              <AddSet openRepsSetsModal={openRepsSetsModal} />
 
-                {currentExerciseData.sets.length > 0 && (
-                  <RepsSetsDisplay
-                    currentExerciseData={currentExerciseData}
-                    setCurrentExerciseData={setCurrentExerciseData}
-                    setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
-                  />
-                )}
-                {currentExerciseData.sets.length > 0 && (
-                  <div>
-                    <p className="">Notes</p>
-                    <div className="">
-                      <textarea
-                        aria-label="notes"
-                        onChange={(e) =>
-                          setCurrentExerciseData(
-                            produce(currentExerciseData, (draft) => {
-                              draft.notes = e.target.value
-                            })
-                          )
-                        }
-                        className=""
-                      ></textarea>
-                    </div>
-                  </div>
-                )}
-                <RepsSetsModal
-                  isRepsSetsModalOpen={isRepsSetsModalOpen}
-                  setCurrentExerciseData={setCurrentExerciseData}
+              {currentExerciseData.sets.length > 0 && (
+                <RepsSetsDisplay
                   currentExerciseData={currentExerciseData}
+                  setCurrentExerciseData={setCurrentExerciseData}
                   setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
                 />
-                <IconButton onClick={submitExerciseData} className="">
-                  {currentExerciseData.sets.length > 0 && (
-                    <AssignmentTurnedIn />
-                  )}
-                </IconButton>
-              </CardContent>
-            </Card>
-          </div>
-        )}
-
-        <div className="">
-          <DisplayExercisesAfterSubmit
-            selectedDate={selectedDate}
-            exerciseStats={exerciseStats}
-            setExerciseStats={setExerciseStats}
-          />
+              )}
+              {currentExerciseData.sets.length > 0 && (
+                <div>
+                  <p className="">Notes</p>
+                  <div className="">
+                    <textarea
+                      aria-label="notes"
+                      onChange={(e) =>
+                        setCurrentExerciseData(
+                          produce(currentExerciseData, (draft) => {
+                            draft.notes = e.target.value
+                          })
+                        )
+                      }
+                      className=""
+                    ></textarea>
+                  </div>
+                </div>
+              )}
+              <RepsSetsModal
+                isRepsSetsModalOpen={isRepsSetsModalOpen}
+                setCurrentExerciseData={setCurrentExerciseData}
+                currentExerciseData={currentExerciseData}
+                setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
+              />
+              <IconButton onClick={submitExerciseData} className="">
+                {currentExerciseData.sets.length > 0 && <AssignmentTurnedIn />}
+              </IconButton>
+            </CardBody>
+          </Card>
         </div>
-      </ThemeProvider>
+      )}
+
+      <div className="">
+        <DisplayExercisesAfterSubmit
+          selectedDate={selectedDate}
+          exerciseStats={exerciseStats}
+          setExerciseStats={setExerciseStats}
+        />
+      </div>
     </main>
   )
 }

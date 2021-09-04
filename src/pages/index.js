@@ -1,5 +1,4 @@
 import { React, useEffect } from "react"
-import "mdb-react-ui-kit/dist/css/mdb.min.css"
 import { useAuth } from "../components/Data/authProvider"
 import { Fragment } from "react"
 import Login from "./Login"

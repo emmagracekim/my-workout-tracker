@@ -1,5 +1,5 @@
 import { React, useState } from "react"
-import { Card } from "@material-ui/core"
+import { Card } from "@windmill/react-ui"
 import Edit from "@material-ui/icons/Edit"
 import UpdateCurrentSetsModal from "./UpdateCurrentSetModal"
 

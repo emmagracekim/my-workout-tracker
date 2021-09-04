@@ -1,26 +1,12 @@
 import React from "react"
 
 import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import {
-  Button,
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  DialogTitle,
-  Dialog,
-  Typography,
-  Card,
-  CardContent,
-} from "@material-ui/core"
 import { Add } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
 import MyButton from "../styles/MyButton"
-import "../styles/select-muscle-group.css"
+import { Card, CardBody } from "@windmill/react-ui"
 
 const styleObj = {
   fontSize: 16,
@@ -44,7 +30,7 @@ const SelectMuscleGroup = ({
   return (
     <div style={{ display: isCardOpen ? "block" : "none" }}>
       <Card>
-        <CardContent>
+        <CardBody>
           <div className="" style={styleObj}>
             <DialogTitle>Select Muscle Group</DialogTitle>
             <div onClick={closeCard} aria-label="Close">
@@ -59,20 +45,13 @@ const SelectMuscleGroup = ({
                   color="red"
                   aria-label="Muscle Select"
                   onClick={() => setMuscleGroup(e)}
-                  // style={{
-                  //   fontFamily: "sans-serif",
-                  //   fontWeight: "bold",
-                  //   alignItems: "center",
-                  //   justifyContent: "space-between",
-                  //   flexWrap: "wrap",
-                  // }}
                 >
                   {e.muscle}
                 </MyButton>
               </div>
             ))}
           </div>
-        </CardContent>
+        </CardBody>
       </Card>
     </div>
   )

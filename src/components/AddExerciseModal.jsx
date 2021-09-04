@@ -1,8 +1,8 @@
-import { Dialog, DialogContent } from "@material-ui/core"
-import { DialogTitle, ListItem, List } from "@material-ui/core"
+import { ListItem, List } from "@material-ui/core"
 import { Fragment } from "react"
 import produce from "immer"
 import MyButton from "../styles/MyButton"
+import { Modal, ModalBody, ModalHeader } from "@windmill/react-ui"
 
 const styleObj = {
   fontSize: 16,
@@ -26,11 +26,9 @@ const AddExerciseModal = ({
 }) => {
   return (
     <Fragment>
-      <Dialog open={isExerciseModalOpen} onClose={closeExerciseModal}>
-        <DialogTitle id="select-exercise-title">
-          {"Select Exercise"}
-        </DialogTitle>
-        <DialogContent>
+      <Modal isOpen={isExerciseModalOpen} onClose={closeExerciseModal}>
+        <ModalHeader>{"Select Exercise"}</ModalHeader>
+        <ModalBody>
           <div className="" style={styleObj}>
             {muscleGroup &&
               muscleGroup.exercises.map((e) => (
@@ -51,8 +49,8 @@ const AddExerciseModal = ({
                 </div>
               ))}
           </div>
-        </DialogContent>
-      </Dialog>
+        </ModalBody>
+      </Modal>
     </Fragment>
   )
 }

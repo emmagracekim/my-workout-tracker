@@ -2,7 +2,7 @@ import { Dialog } from "@material-ui/core"
 import { DialogContent } from "@material-ui/core"
 import { CheckBox } from "@material-ui/icons"
 import Delete from "@material-ui/icons/Delete"
-import { flexbox } from "@material-ui/system"
+import { Modal, ModalBody } from "@windmill/react-ui"
 import produce from "immer"
 
 const UpdateCurrentSetsModal = ({
@@ -46,9 +46,9 @@ const UpdateCurrentSetsModal = ({
   }
 
   return (
-    <Dialog open={isModalOpen} onClose={closeModal}>
+    <Modal isOpen={isModalOpen} onClose={closeModal}>
       <p className="">Edit Set</p>
-      <DialogContent>
+      <ModalBody>
         <div key={currSet.id}>
           <div className="">
             <div>
@@ -82,7 +82,7 @@ const UpdateCurrentSetsModal = ({
             </div>
           </div>
         </div>
-      </DialogContent>
+      </ModalBody>
 
       <div
         className=""
@@ -95,7 +95,7 @@ const UpdateCurrentSetsModal = ({
           <CheckBox aria-label="done" color="pink" />
         </div>
       </div>
-    </Dialog>
+    </Modal>
   )
 }
 export default UpdateCurrentSetsModal

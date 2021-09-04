@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react"
-import { Card, CardContent } from "@material-ui/core"
 import { useAuth } from "./Data/authProvider"
 import { db } from "./Data/firebase"
 import {
@@ -7,7 +6,7 @@ import {
   ArrowDownwardRounded,
   ArrowRight,
 } from "@material-ui/icons"
-import { display } from "@material-ui/system"
+import { Card, CardBody } from "@windmill/react-ui"
 
 const DisplayExercisesAfterSubmit = ({
   selectedDate,
@@ -63,24 +62,24 @@ const DisplayExercisesAfterSubmit = ({
   }
 
   const getExerciseStats = async () => {
-      await db
-        .collection("profiles")
-        .doc(user.uid)
-        .collection("workouts")
-        .where("date", "==", selectedDate)
-        .orderBy("timeStamp", "asc")
-        .onSnapshot((querySnapshot) => {
-          setExerciseStats(
-            querySnapshot.docs.map((doc) => ({
-              timeStamp: doc.data().timeStamp,
-              exercise: doc.data().exercise,
-              sets: doc.data().sets,
-              id: doc.id,
-              notes: doc.data().notes,
-            }))
-          )
-        })
-    }
+    await db
+      .collection("profiles")
+      .doc(user.uid)
+      .collection("workouts")
+      .where("date", "==", selectedDate)
+      .orderBy("timeStamp", "asc")
+      .onSnapshot((querySnapshot) => {
+        setExerciseStats(
+          querySnapshot.docs.map((doc) => ({
+            timeStamp: doc.data().timeStamp,
+            exercise: doc.data().exercise,
+            sets: doc.data().sets,
+            id: doc.id,
+            notes: doc.data().notes,
+          }))
+        )
+      })
+  }
 
   useEffect(() => {
     if ((user, selectedDate)) {
@@ -96,7 +95,7 @@ const DisplayExercisesAfterSubmit = ({
     exerciseStats.map((e) => (
       <section key={e.id} className="mb-4">
         <Card>
-          <CardContent>
+          <CardBody>
             <div className="">
               <div className="" onClick={() => isSelected(e.id)}>
                 <p className="">
@@ -123,7 +122,7 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
             </div>
-          </CardContent>
+          </CardBody>
         </Card>
       </section>
     ))

@@ -1,10 +1,10 @@
 import { React, useState } from "react"
-import { Dialog, DialogTitle, IconButton } from "@material-ui/core"
-import { DialogContent } from "@material-ui/core"
+import { IconButton } from "@material-ui/core"
 import produce from "immer"
 import { nanoid } from "nanoid"
 import Delete from "@material-ui/icons/Delete"
 import { AssignmentTurnedIn } from "@material-ui/icons"
+import { Modal, ModalBody, ModalHeader } from "@windmill/react-ui"
 
 const RepsSetsModal = ({
   isRepsSetsModalOpen,
@@ -50,12 +50,12 @@ const RepsSetsModal = ({
 
   return (
     <div className="">
-      <Dialog open={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
-        <DialogTitle style={{ margin: 10 }}>
+      <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
+        <ModalHeader style={{ margin: 10 }}>
           {" "}
           {currentExerciseData.currentExer}{" "}
-        </DialogTitle>
-        <DialogContent style={{ margin: 10 }}>
+        </ModalHeader>
+        <ModalBody style={{ margin: 10 }}>
           <div className="">
             <div>
               <div className="">
@@ -98,7 +98,7 @@ const RepsSetsModal = ({
               </div>
             </div>
           </div>
-        </DialogContent>
+        </ModalBody>
         <div className="">
           <IconButton
             onClick={closeRepsSetsModal}
@@ -132,7 +132,7 @@ const RepsSetsModal = ({
             />
           </IconButton>
         </div>
-      </Dialog>
+      </Modal>
     </div>
   )
 }

@@ -3,16 +3,23 @@ import "firebase/auth"
 import "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAR5JXTrQx_W0m5kaYvW7YTIbwATmU3GEA",
-  authDomain: "fit4life-f0372.firebaseapp.com",
-  projectId: "fit4life-f0372",
-  storageBucket: "fit4life-f0372.appspot.com",
-  messagingSenderId: "640580392358",
-  appId: "1:640580392358:web:791f6f42e3ae7f8637eb67",
-  measurementId: "G-C5YSK4Q453",
+  apiKey: "AIzaSyBnZZ9R3F4ThtNKGFGML3oIle7Ed3aXhBs",
+  authDomain: "workout-tracker-887b0.firebaseapp.com",
+  databaseURL: "https://workout-tracker-887b0-default-rtdb.firebaseio.com",
+  projectId: "workout-tracker-887b0",
+  storageBucket: "workout-tracker-887b0.appspot.com",
+  messagingSenderId: "30631146252",
+  appId: "1:30631146252:web:d7807ca7a31338163b8f29",
+  measurementId: "G-KTZ3DNSB5C",
 }
 
-firebase.initializeApp(firebaseConfig)
+if (firebase.apps.length === 0) {
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig)
+  firebase.firestore().settings({ experimentalForceLongPolling: true })
+} else {
+  console.log("firebase apps already running...")
+}
 
 const auth = firebase.auth()
 const db = firebase.firestore()
