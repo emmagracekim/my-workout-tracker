@@ -5,8 +5,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { GiWeightLiftingUp } from "react-icons/gi"
 import { HomeRounded, TodayRounded } from "@material-ui/icons"
 import { Transition } from "@headlessui/react"
-import { useRouter } from "next/dist/client/router"
-import { Router } from "react-router"
+import { useRouter } from "next/router"
 
 const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
   const [profileOpen, setProfileOpen] = useState(false)

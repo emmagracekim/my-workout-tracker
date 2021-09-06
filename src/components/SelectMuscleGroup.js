@@ -8,18 +8,18 @@ import { Close } from "@material-ui/icons"
 import MyButton from "../styles/MyButton"
 import { Card, CardBody } from "@windmill/react-ui"
 
-const styleObj = {
-  fontSize: 16,
-  //color: "#03A9F4",
-  textAlign: "center",
-  paddingTop: "10px",
-  fontFamily: "Arial",
-  fontWeight: "bold",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  flexWrap: "wrap",
-}
+// const styleObj = {
+//   fontSize: 16,
+//   //color: "#03A9F4",
+//   textAlign: "center",
+//   paddingTop: "10px",
+//   fontFamily: "Arial",
+//   fontWeight: "bold",
+//   display: "flex",
+//   justifyContent: "space-between",
+//   alignItems: "center",
+//   flexWrap: "wrap",
+// }
 
 const SelectMuscleGroup = ({
   closeCard,
@@ -31,14 +31,14 @@ const SelectMuscleGroup = ({
     <div style={{ display: isCardOpen ? "block" : "none" }}>
       <Card>
         <CardBody>
-          <div className="" style={styleObj}>
-            <DialogTitle>Select Muscle Group</DialogTitle>
+          <div className="mb-4 font-bold text-pink">
+            Select Muscle Group
             <div onClick={closeCard} aria-label="Close">
               <Close aria-label="Close" />
             </div>
           </div>
 
-          <div className="" style={styleObj}>
+          <div className="">
             {exerciseList.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
                 <MyButton

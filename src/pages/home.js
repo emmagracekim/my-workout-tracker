@@ -1,15 +1,14 @@
-import { react, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import ReactDatePicker from "react-datepicker"
-import { withRouter, Route } from "react-router"
 import { useAuth } from "../components/Data/authProvider"
 import "react-datepicker/dist/react-datepicker.css"
 import format from "date-fns/format"
 import { db } from "../components/Data/firebase"
-import React from "react"
 import CreateWorkout from "../components/CreateWorkout"
 import NavBar from "../components/NavBar"
-import { useRouter } from "next/dist/client/router"
-import Head from "next/dist/shared/lib/head"
+import { useRouter } from "next/router"
+import Head from "next/head"
+import React from "react"
 
 const Home = () => {
   // const history = useHistory()
@@ -50,6 +49,14 @@ const Home = () => {
 
   return (
     <React.Fragment>
+      <Head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width"
+          name="home.js"
+          content="home page"
+        />
+      </Head>
       <section>
         <div>
           <NavBar
