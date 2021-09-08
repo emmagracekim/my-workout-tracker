@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
   //   )
 
   //   const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect
+  React.useLayoutEffect = React.useEffect
 
   return (
     <React.Fragment>
