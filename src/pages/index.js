@@ -1,8 +1,9 @@
-import { React, useEffect } from "react"
+import { useEffect } from "react"
 import { useAuth } from "../components/Data/authProvider"
 import Login from "./Login"
 import { useRouter } from "next/router"
 import Head from "next/head"
+import * as React from "react"
 
 export default function Home() {
   const { user, loading } = useAuth()

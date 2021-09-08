@@ -1,12 +1,20 @@
 import "../styles/globals.css"
+import React from "react"
 import { AuthProvider } from "../components/Data/authProvider"
 import Head from "next/head"
 import { ThemeProvider } from "@material-ui/styles"
 import theme from "../config/theme"
 import { Windmill } from "@windmill/react-ui"
-import React from "react"
 
 function MyApp({ Component, pageProps }) {
+  //   const canUseDOM = !!(
+  //     typeof window !== "undefined" &&
+  //     typeof window.document != "undefined" &&
+  //     typeof window.document.createElement != "undefined"
+  //   )
+
+  //   const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect
+
   return (
     <React.Fragment>
       <Head>
