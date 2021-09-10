@@ -1,6 +1,6 @@
 import { React, useState, useRef, useEffect, useContext } from "react"
 import { useAuth } from "./Data/authProvider"
-import ReactDatePicker from "react-datepicker"
+import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { GiWeightLiftingUp } from "react-icons/gi"
 import { HomeRounded, TodayRounded } from "@material-ui/icons"
@@ -42,12 +42,12 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
 
   return (
     user && (
-      <nav className="">
-        <div>
-          <div>
-            <div>
+      <nav className="transition bg-white shadow-bottom ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
               <div
-                className=""
+                className="flex-shrink-0 cursor-pointer"
                 onClick={() => {
                   router.push("/home")
                 }}
@@ -56,9 +56,9 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
               </div>
 
               <div className="md:block">
-                <div className="">
+                <div className="ml-8 flex items-baseline space-x-4">
                   <a
-                    href="/#"
+                    href="#"
                     aria-label="Home"
                     onClick={() => {
                       router.push("/home")
@@ -67,7 +67,7 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                     <HomeRounded aria-label="Home" />
                   </a>
 
-                  <ReactDatePicker
+                  <DatePicker
                     aria-label="Calendar"
                     selected={selectedDate}
                     onChange={handleDateChange}
@@ -86,12 +86,12 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
               </div>
             </div>
             <div className="md:block">
-              <div className="">
-                <div className="" ref={wrapperRef}>
+              <div className="ml-4 flex items-center md:ml-6">
+                <div className="ml-6 relative" ref={wrapperRef}>
                   <div>
                     <button
                       aria-label="profile menu"
-                      className=""
+                      className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                       id="user-menu"
                       aria-haspopup="true"
                       onClick={() => setProfileOpen(!profileOpen)}
@@ -123,14 +123,14 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                     leaveTo="opacity-0 scale-95"
                   >
                     <div
-                      className=""
+                      className="z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 text-gray-700 bg-white ring-1 ring-black ring-opacity-5"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu"
                     >
                       <a
-                        href="/#"
-                        className=""
+                        href="#"
+                        className="block px-4 py-2 text-sm hover:bg-blue-200"
                         role="menuitem"
                         tabIndex="0"
                         onClick={() => router.push("/profile")}
@@ -139,8 +139,8 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                       </a>
 
                       <a
-                        href="/#"
-                        className=""
+                        href="#"
+                        className="block px-4 py-2 text-sm  hover:bg-blue-200"
                         role="menuitem"
                         tabIndex="0"
                         onClick={logout}
@@ -148,8 +148,8 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                         Sign out
                       </a>
                       <a
-                        href="/#"
-                        className=""
+                        href="#"
+                        className="block px-4 py-2 text-sm  hover:bg-blue-200"
                         role="menuitem"
                         tabIndex="0"
                         onClick={openDeleteModal}

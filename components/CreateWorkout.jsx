@@ -96,7 +96,7 @@ const CreateWorkout = ({ selectedDate }) => {
   }
 
   return (
-    <main className="className">
+    <main className="pb-20 transition flex items-center flex-col bg-gray-50 w-screen">
       <SelectMuscleGroup
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}
@@ -119,21 +119,17 @@ const CreateWorkout = ({ selectedDate }) => {
       />
 
       {currentExerciseData.currentExer.length > 0 && (
-        <div style={{ display: isExerciseOpen ? "block" : "none" }}>
+        <div
+          className={`${
+            isExerciseOpen ? "block" : "hidden"
+          } mt-6 w-11/12 sm:w-2/3  lg:max-w-xl`}
+        >
           <Card>
             <CardBody>
-              <div
-                className=""
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                }}
-              >
-                <div style={{ fontFamily: "sans-serif", fontWeight: "bolder" }}>
+              <div className="flex justify-between">
+                <p className="self-center font-semibold text-gray-600 md:text-xl">
                   {currentExerciseData.currentExer}
-                </div>
+                </p>
                 <div onClick={handleDeleteCurrentExercise} aria-label="delete">
                   <Delete aria-label="delete" fontSize="medium" />
                 </div>

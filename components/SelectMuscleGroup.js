@@ -5,7 +5,7 @@ import { Add } from "@material-ui/icons"
 import { blue } from "@material-ui/core/colors"
 import { exerciseList } from "./Data/exerciseList"
 import { Close } from "@material-ui/icons"
-import MyButton from "../styles/MyButton"
+import MyButton from "./MyStyleStuff/MyButton"
 import { Card, CardBody } from "@windmill/react-ui"
 
 // const styleObj = {

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import ReactDatePicker from "react-datepicker"
+import DatePicker from "react-datepicker"
 import { useAuth } from "../components/Data/authProvider"
 import "react-datepicker/dist/react-datepicker.css"
 import format from "date-fns/format"
 import { db } from "../components/Data/firebase"
 import CreateWorkout from "../components/CreateWorkout"
 import NavBar from "../components/NavBar"
+import Nav from "../components/NavBar"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import React from "react"
@@ -45,7 +46,11 @@ const Home = () => {
     }
   }, [user])
 
-  const DateButton = ({ value }) => <p className="">{value}</p>
+  const DateButton = ({ value }) => (
+    <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
+      {value}
+    </p>
+  )
 
   return (
     <React.Fragment>
@@ -58,13 +63,13 @@ const Home = () => {
         />
       </Head>
       <section>
-        <div>
-          <NavBar
+        <div className="relative min-h-screen w-screen">
+          <Nav
             selectedDate={startDate}
             handleDateChange={handleDateChange}
             highlightDates={uniq.map((date) => new Date(date))}
           />
-          <ReactDatePicker
+          <DatePicker
             selected={startDate}
             onChange={handleDateChange}
             name="startDate"

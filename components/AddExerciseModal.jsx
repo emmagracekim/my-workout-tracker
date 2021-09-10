@@ -1,7 +1,7 @@
 import { ListItem, List } from "@material-ui/core"
 import { Fragment } from "react"
 import produce from "immer"
-import MyButton from "../styles/MyButton"
+import MyButton from "../components/MyStyleStuff/MyButton"
 import { Modal, ModalBody, ModalHeader } from "@windmill/react-ui"
 
 const styleObj = {
