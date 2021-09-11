@@ -20,7 +20,11 @@ const Home = () => {
   const [exerciseDates, setExerciseDates] = useState([])
   const uniq = [...new Set(exerciseDates)]
   const formattedDate = format(startDate, "p")
-  const handleDateChange = (date) => setStartDate(date)
+  const handleDateChange = (date) => {
+    const valueOfInput = date.format()
+    console.log(`valueOfInput`, valueOfInput)
+    setStartDate(date)
+  }
 
   const getExerciseDates = async () => {
     await db
@@ -46,12 +50,16 @@ const Home = () => {
     }
   }, [user])
 
-  const DateButton = ({ value }) => (
-    <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
-      {value}
-    </p>
-  )
-
+  const DateButton = () => {
+    const dateString = startDate.toString()
+    const todayDate = dateString.substring(0, 15)
+    return (
+      <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
+        {todayDate}
+      </p>
+    )
+  }
+  console.log(new Date())
   return (
     <React.Fragment>
       <Head>
@@ -78,6 +86,7 @@ const Home = () => {
             customInput={<DateButton />}
             highlightDates={uniq.map((date) => new Date(date))}
           />
+          {/* <DateButton value={startDate} /> */}
           <CreateWorkout
             selectedDate={formattedDate}
             handleDateChange={handleDateChange}
