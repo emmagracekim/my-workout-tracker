@@ -27,9 +27,11 @@ const AddExerciseModal = ({
   return (
     <Fragment>
       <Modal isOpen={isExerciseModalOpen} onClose={closeExerciseModal}>
-        <ModalHeader>{"Select Exercise"}</ModalHeader>
+        <ModalHeader className="mb-4 font-semibold text-gray-600 md:text-xl">
+          {"Select Exercise"}
+        </ModalHeader>
         <ModalBody>
-          <div className="" style={styleObj}>
+          <div className="sm:pt-2 flex" style={styleObj}>
             {muscleGroup &&
               muscleGroup.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>

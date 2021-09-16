@@ -49,20 +49,21 @@ const RepsSetsModal = ({
   }
 
   return (
-    <div className="">
+    <div className="text-gray-600 flex justify-center">
       <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
-        <ModalHeader style={{ margin: 10 }}>
+        <ModalHeader className="mb-4 font-semibold text-gray-600 md:text-xl">
           {" "}
           {currentExerciseData.currentExer}{" "}
         </ModalHeader>
-        <ModalBody style={{ margin: 10 }}>
-          <div className="">
+        <ModalBody>
+          <div className="flex bg-gray-50 p-2 rounded-lg sm:flex-row justify-around text-gray-600">
             <div>
-              <div className="">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Set</label>
               </div>
-              <div className="">
+              <div className="flex justify-center pb-2">
                 <input
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
                   type="number"
                   name="weight"
                   required
@@ -72,11 +73,12 @@ const RepsSetsModal = ({
               </div>
             </div>
             <div>
-              <div className="">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Weight</label>
               </div>
-              <div className="">
+              <div className="flex justify-center pb-2">
                 <input
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
                   type="number"
                   name="weight"
                   required
@@ -85,11 +87,12 @@ const RepsSetsModal = ({
               </div>
             </div>
             <div>
-              <div className="">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Reps</label>
               </div>
-              <div className="">
+              <div className="flex justify-center">
                 <input
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
                   type="number"
                   name="reps"
                   onChange={handleChange}
@@ -99,7 +102,7 @@ const RepsSetsModal = ({
             </div>
           </div>
         </ModalBody>
-        <div className="">
+        <div className="flex justify-between">
           <IconButton
             onClick={closeRepsSetsModal}
             aria-label="delete"
@@ -112,14 +115,19 @@ const RepsSetsModal = ({
           <IconButton
             onClick={handleSubmit}
             aria-label="done"
-            style={{
-              pointerEvents:
-                currentSet.reps > 0 || currentSet.weight > 0 ? "auto" : "none",
-              position: "absolute",
-              right: 5,
-              bottom: 5,
-              color: "Background",
-            }}
+            className={`${
+              currentSet.reps > 0 || currentSet.weight > 0
+                ? "pointer-events-auto"
+                : "pointer-events-none"
+            }`}
+            // style={{
+            //   pointerEvents:
+            //     currentSet.reps > 0 || currentSet.weight > 0 ? "auto" : "none",
+            //   position: "absolute",
+            //   right: 5,
+            //   bottom: 5,
+            //   color: "Background",
+            // }}
           >
             <AssignmentTurnedIn
               aria-label="done"

@@ -47,17 +47,17 @@ const UpdateCurrentSetsModal = ({
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
-      <p className="">Edit Set</p>
+      <p className="my-2 font-semibold text-blue-300 md:text-xl">Edit Set</p>
       <ModalBody>
         <div key={currSet.id}>
-          <div className="">
+          <div className="flex bg-gray-50 p-2 rounded-lg sm:flex-row justify-around text-gray-600">
             <div>
-              <div className="">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Weight</label>
               </div>
-              <div className="">
+              <div className="flex justify-center pb-2">
                 <input
-                  className=""
+                  className="py-2 rounded w-1/2 border text-black text-center"
                   type="number"
                   name="weight"
                   onChange={handleChange}
@@ -67,11 +67,12 @@ const UpdateCurrentSetsModal = ({
               </div>
             </div>
             <div>
-              <div className="">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Reps</label>
               </div>
-              <div className="">
+              <div className="flex justify-center">
                 <input
+                  className="py-2 rounded w-1/2 border text-black text-center"
                   type="number"
                   name="reps"
                   onChange={handleChange}
@@ -84,10 +85,7 @@ const UpdateCurrentSetsModal = ({
         </div>
       </ModalBody>
 
-      <div
-        className=""
-        style={{ display: "flex", justifyItems: "justify-between" }}
-      >
+      <div className="flex justify-between">
         <div onClick={handleDelete} aria-label="delete">
           <Delete aria-label="delete" />
         </div>

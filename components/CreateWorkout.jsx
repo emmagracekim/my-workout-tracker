@@ -146,8 +146,10 @@ const CreateWorkout = ({ selectedDate }) => {
               )}
               {currentExerciseData.sets.length > 0 && (
                 <div>
-                  <p className="">Notes</p>
-                  <div className="">
+                  <p className="my-2 font-semibold text-gray-600 md:text-xl">
+                    Notes
+                  </p>
+                  <div className="sm:mx-4">
                     <textarea
                       aria-label="notes"
                       onChange={(e) =>
@@ -157,7 +159,7 @@ const CreateWorkout = ({ selectedDate }) => {
                           })
                         )
                       }
-                      className=""
+                      className="p-2 flex justify-center items-center rounded w-full m-auto text-base bg-gray-50 transition"
                     ></textarea>
                   </div>
                 </div>
@@ -168,7 +170,10 @@ const CreateWorkout = ({ selectedDate }) => {
                 currentExerciseData={currentExerciseData}
                 setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
               />
-              <IconButton onClick={submitExerciseData} className="">
+              <IconButton
+                onClick={submitExerciseData}
+                className="flex justify0end mt-3"
+              >
                 {currentExerciseData.sets.length > 0 && <AssignmentTurnedIn />}
               </IconButton>
             </CardBody>
@@ -176,7 +181,7 @@ const CreateWorkout = ({ selectedDate }) => {
         </div>
       )}
 
-      <div className="">
+      <div className=" w-11/12 sm:w-2/3 lg:max-w-xl">
         <DisplayExercisesAfterSubmit
           selectedDate={selectedDate}
           exerciseStats={exerciseStats}
