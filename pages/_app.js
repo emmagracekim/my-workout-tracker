@@ -5,6 +5,7 @@ import Head from "next/head"
 import { ThemeProvider } from "@material-ui/styles"
 import theme from "../config/theme"
 import { Windmill } from "@windmill/react-ui"
+import { GoogleFonts } from "next-google-fonts"
 
 function MyApp({ Component, pageProps }) {
   //   const canUseDOM = !!(
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <React.Fragment>
+      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
       <Head>
         <title>Fit4Life Workout Tracker</title>
         <meta name="Description" content="This is the home page of my site" />

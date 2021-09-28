@@ -21,6 +21,9 @@ module.exports = windmill({
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
+      backgroundImage: (theme) => ({
+        "hero-pattern": "url('/components/Images/texture.svg')",
+      }),
     },
   },
   variants: {

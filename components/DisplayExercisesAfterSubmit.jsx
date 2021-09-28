@@ -7,6 +7,8 @@ import {
   ArrowRight,
 } from "@material-ui/icons"
 import { Card, CardBody } from "@windmill/react-ui"
+import { AddSubmittedSet } from "./AddSet"
+import AddMoreSetsModal from "./AddMoreSetsModal"
 
 const DisplayExercisesAfterSubmit = ({
   selectedDate,
